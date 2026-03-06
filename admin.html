@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>Admin Panel</title>
+
+<style>
+
+body{
+background:#111;
+color:white;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.panel{
+
+background:#1b1b1b;
+padding:40px;
+border-radius:15px;
+width:350px;
+box-shadow:0 0 20px black;
+
+}
+
+input,textarea{
+
+width:100%;
+margin-top:10px;
+margin-bottom:15px;
+padding:10px;
+border:none;
+border-radius:8px;
+
+}
+
+button{
+
+width:100%;
+padding:12px;
+background:#00aaff;
+border:none;
+color:white;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+
+}
+
+button:hover{
+background:#0088cc;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="panel">
+
+<h2>Add Project</h2>
+
+<input id="title" placeholder="اسم المشروع">
+
+<textarea id="desc" placeholder="وصف المشروع"></textarea>
+
+<input id="link" placeholder="رابط التحميل من GitHub">
+
+<button onclick="addProject()">Add</button>
+
+</div>
+
+<script>
+
+function addProject(){
+
+let title=document.getElementById("title").value
+let desc=document.getElementById("desc").value
+let link=document.getElementById("link").value
+
+let projects=JSON.parse(localStorage.getItem("projects"))||[]
+
+projects.push({
+title:title,
+desc:desc,
+link:link
+})
+
+localStorage.setItem("projects",JSON.stringify(projects))
+
+alert("Project Added")
+
+}
+
+</script>
+
+</body>
+</html>
